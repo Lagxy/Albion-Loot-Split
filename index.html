@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <table id="data">
+            <thead>
+                <th class="small">No.</th>
+                <th>Name</th>
+                <th>Time Start</th>
+                <th>Time End</th>
+                <th>Split Percentage</th>
+                <th>Loot</th>
+            </thead>
+            <tbody class="data-items">
+
+            </tbody>
+        </table>
+        <div class="form-container">
+            <form class="input">
+                <label for="name">Name:</label>
+                <input type="text" id="name" autocomplete="off" required>
+                <br>
+                <label for="tstart">Time start:</label>
+                <input type="time" id="tstart" required>
+                <br>
+                <label for="tend">Time end:</label>
+                <input type="time" id="tend" required>
+                <br>
+                <button type="button" id="addbtn">Submit</button>
+            </form>
+            <form class="input">
+                <label for="loot">Total loot:</label>
+                <input type="number" id="loot">
+                <br>
+                <button type="button" id="calculate">Calculate</button>
+            </form>
+        </div>
+    </main>
+    <p>*this web wasn't made properly, so you might need to refresh the page to make new calculation or if something going wrong</p>
+    <p>*this tool is still on development, it can't calculate properly when the time end is above 23:59, it will be fixed in further update</p>
+    <script src="script.js"></script>
+</body>
+</html>
