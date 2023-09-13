@@ -4,15 +4,16 @@
 }
 
 .container {
-    padding: 2rem;
+    padding: 1rem;
 }
 
 table, th, td {
     border: 1px solid black;
+    text-align: center;
 }
 
 th {
-    width: 10%;
+    width: 9%;
 }
 
 .input {
@@ -27,5 +28,5 @@ th {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 2rem;
+    gap: 1rem;
 }

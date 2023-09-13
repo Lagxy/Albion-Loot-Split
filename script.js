@@ -5,9 +5,6 @@ const table = document.querySelector("#data");
 let counter = 1;
 let playerTimes = [];
 
-let time_start;
-let time_end;
-
 addBtn.addEventListener('click', () => {
     const name = document.querySelector("#name").value;
     const start = document.querySelector("#tstart").value;
@@ -33,28 +30,12 @@ addBtn.addEventListener('click', () => {
 
         let start_arr = [parseInt(start.split(':')[0]), parseInt(start.split(':')[1])];
         let end_arr = [parseInt(end.split(':')[0]), parseInt(end.split(':')[1])];
+        if(start_arr[0] > end_arr[0]){
+            end_arr[0] += 24;
+        }
         let curr_player_time = (end_arr[0] - start_arr[0]) * 60 - start_arr[1] + end_arr[1];
         playerTimes.push(curr_player_time);
-
-        if(time_start != null && time_end != null){
-            if (parseInt(time_start[0]) >= start_arr[0]){
-                time_start[0] = start_arr[0];
-                if (parseInt(time_start[1]) > start_arr[1]){
-                    time_start[1] = start_arr[1];
-                }
-            }
-            if (parseInt(time_end[0]) <= end_arr[0]){
-                time_end[0] = end_arr[0];
-                if (parseInt(time_end[1]) < end_arr[1]){
-                    time_end[1] = end_arr[1];
-                }
-            }
-        } else {
-            time_start = start.split(':');
-            time_end = end.split(':');
-        }
-}
-});
+}});
 
 calcBtn.addEventListener('click', () => {
     const totalLoot = document.querySelector("#loot").value;
@@ -73,13 +54,12 @@ calcBtn.addEventListener('click', () => {
 
 function cuts() {
     const totalLoot = document.querySelector("#loot").value;
-    //const TotalTime = (time_end[0] - time_start[0]) * 60 - time_start[1] + time_end[1];
     const totalPlayerTime = playerTimes.reduce((acc, time) => acc + time, 0);
 
     return playerTimes.map(time => ({
-        lootShare: new Intl.NumberFormat().format(((time / totalPlayerTime) * totalLoot).toFixed(1)),
+        lootShare: new Intl.NumberFormat().format(((time / totalPlayerTime) * totalLoot)),
         percentageShare: ((time / totalPlayerTime) * 100).toFixed(2)
-    }))
+    }));
 }
 
 
